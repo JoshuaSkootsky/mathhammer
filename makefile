@@ -4,11 +4,12 @@ CYEAR=-std=c99
 
 weapons:
 	
-	${CC} ${CFLAGS} -o weapons -O2 ${CYEAR} -pedantic weapons.c
+	${CC} ${CFLAGS} -o weapons.o -O2 ${CYEAR} -pedantic weapons.c
 
 all:
-	${CC} ${CFLAGS} -o mathhammer -O2 ${CYEAR} -pedantic weapons.c
+	${CC} ${CFLAGS} -o mathhammer.o -O2 ${CYEAR} -pedantic weapons.c
 
 clean:
-	rm mathhammer weapons
+	rm mathhammer.o weapons.o
+
 
