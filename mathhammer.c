@@ -9,9 +9,9 @@ double shoot( int weapon[4], int target[4]) {
 	// bs 3+ hits on 3, 4, 5 6 = 4 of 6 can hit.
 	int canHit = 6 - weapon[0] + 1;
 	double hits = canHit/ (float) 6; // cast to double
-	
+	printf("This is how many shots hit %lf\n", hits);	
 
-	double woundPower = weapon[1]/target[0];
+	double woundPower = weapon[1]/ (double) target[0];
 	int canWound;
 	
 	if (woundPower < 1) {
@@ -33,12 +33,26 @@ double shoot( int weapon[4], int target[4]) {
 
 	double wounds = canWound/ (float) 6;
 
-	double saves;
-	
-	
-	
+	printf("Here is number of wounds %lf\n", hits * wounds);
 
-	return hits*wounds;
+	wounds = hits * wounds;
+
+	int save =  target[1];
+	printf("Save before checking ap is %d\n", save);
+	int invulsave = target[2];
+	save = save + weapon[2]; // the |ap| of the weapon
+	printf("Save after ap is %d\n", save);
+	if (save > invulsave) {
+		save = invulsave;
+	}
+	if (save >= 7) {
+		save = 7;
+	}
+	printf("Save after checking invul is %d\n", save);
+	int canUnsave = save - 1;
+	double unsaved = wounds * canUnsave / (float) 6;			
+	printf("Here is how many unsaved wounds there are %lf\n", unsaved);
+	return unsaved;
 
 
 }
@@ -46,17 +60,24 @@ double shoot( int weapon[4], int target[4]) {
 
 int main()
 {
-	// bs, str, ap, wounds
-	int bolter[4] = {3,4, (-1) ,1};
+	// bs, str, |ap|, wounds
+	int bolter[4] = {3,4, 0 ,1};
+	int lascannon[4] = {3, 9, 4, 1};
 	// toughness, save, invul save, wounds
 	int marine[4] = {4, 3, 0, 1};
+	int heavy_vehicle[4] = {8, 3, 5, 10}; 
 
 	printf("We will test 40k weapons according to 8th edition rules\n");
 	
-	printf("Here is one bolter shooting at a marine with no armor");
+	printf("Here is one marine w/ bolter shooting at another marine\n");
 	double wounds = shoot(bolter, marine);
-	printf("Here is the number of wounds %lf \n", wounds);
+	printf("Here is the number of wounds inflicted %lf \n", wounds);
 
+	printf("Now let's have a marine shoot another one with a lascannon!\n");
+	shoot(lascannon, marine);
+
+	printf("Now shoot a lascannon at a T8 vehicle with a 5++ save\n");
+	shoot(lascannon, heavy_vehicle);	
 
 	return 0;
 
