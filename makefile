@@ -10,6 +10,6 @@ all:
 	${CC} ${CFLAGS} -o mathhammer.o -O2 ${CYEAR} -pedantic mathhammer.c
 
 clean:
-	rm mathhammer.o weapons.o
+	rm mathhammer.o
 
 

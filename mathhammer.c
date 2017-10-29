@@ -5,7 +5,7 @@
 
 
 double shoot( int weapon[4], int target[4]) {
-	wounds = 5;
+	double wounds = 5;
 	
 
 	return wounds;
@@ -17,9 +17,9 @@ double shoot( int weapon[4], int target[4]) {
 int main()
 {
 	// bs, str, ap, wounds
-	int bolter[4] = [3,4,-1,1];
+	int bolter[4] = {3,4, (-1) ,1};
 	// toughness, save, invul save, wounds
-	int marine[4] = [4, 3, 0, 1]
+	int marine[4] = {4, 3, 0, 1};
 	
 
 
