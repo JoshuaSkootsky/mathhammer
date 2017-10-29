@@ -40,6 +40,7 @@ double shoot( double weapon[4], double target[4]) {
 	double  save =  target[1];
 	printf("Save before checking ap is %lf\n", save);
 	
+	printf("Weapon has an AP value of %lf\n", weapon[2]);	
 	double invulsave = target[2];
 	save = save + (double) weapon[2]; // the |ap| of the weapon
 	printf("Save after ap is %lf\n", save);
