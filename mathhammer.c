@@ -3,24 +3,27 @@
 #include "random64.h"
 
 
-struct Target
-{
-	int tough
-	int save
-	int invulsave
-	int wounds
+
+double shoot( int weapon[4], int target[4]) {
+	wounds = 5;
+	
+
+	return wounds;
+
+
 }
 
-struct Weapon
-{
-	int bs
-	int str
-	int ap
-	int wounds
-}
 
 int main()
 {
+	// bs, str, ap, wounds
+	int bolter[4] = [3,4,-1,1];
+	// toughness, save, invul save, wounds
+	int marine[4] = [4, 3, 0, 1]
+	
+
+
+	
 
 	printf("We will test 40k weapons according to 8th edition rules\n");
 	

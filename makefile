@@ -2,12 +2,12 @@ CC = gcc
 CFLAGS=-Wall
 CYEAR=-std=c99
 
-weapons:
+mathhammer:
 	
-	${CC} ${CFLAGS} -o weapons.o -O2 ${CYEAR} -pedantic weapons.c
+	${CC} ${CFLAGS} -o mathhammer.o -O2 ${CYEAR} -pedantic mathhammer.c
 
 all:
-	${CC} ${CFLAGS} -o mathhammer.o -O2 ${CYEAR} -pedantic weapons.c
+	${CC} ${CFLAGS} -o mathhammer.o -O2 ${CYEAR} -pedantic mathhammer.c
 
 clean:
 	rm mathhammer.o weapons.o
