@@ -1,3 +1,4 @@
+// Copyright Joshua Skootsky, 2016
 #include <stdint.h>
 
 // Choices must conform with Hull-Dobell Theorem
