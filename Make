@@ -1,0 +1,3 @@
+CFLAGS=-WALL
+
+weapons: ; gcc -o weapons -O2 -stc99 -pedantic weapons.c
