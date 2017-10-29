@@ -1,0 +1,5 @@
+// what should git ignore?
+*.o
+*.txt
+*.dat
+

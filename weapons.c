@@ -7,4 +7,8 @@ int main()
 	printf("We will test 40k weapons according to 8th edition rules\n");
 	return 0;
 
+	// test weapons against marines and toughness 3 vehicles
+
+	
+
 }
