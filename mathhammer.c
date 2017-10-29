@@ -4,15 +4,15 @@
 
 
 
-double shoot( int weapon[4], int target[4]) {
+double shoot( double weapon[4], double target[4]) {
 	
 	// bs 3+ hits on 3, 4, 5 6 = 4 of 6 can hit.
-	int canHit = 6 - weapon[0] + 1;
+	double canHit = 6 - weapon[0] + 1;
 	double hits = canHit/ (float) 6; // cast to double
 	printf("This is how many shots hit %lf\n", hits);	
 
 	double woundPower = weapon[1]/ (double) target[0];
-	int canWound;
+	double canWound;
 	
 	if (woundPower < 1) {
 		canWound = 2;
@@ -31,25 +31,26 @@ double shoot( int weapon[4], int target[4]) {
 		canWound = 5;
 	}
 
-	double wounds = canWound/ (float) 6;
+	double wounds = canWound/ (double) 6;
 
 	printf("Here is number of wounds %lf\n", hits * wounds);
 
 	wounds = hits * wounds;
 
-	int save =  target[1];
-	printf("Save before checking ap is %d\n", save);
-	int invulsave = target[2];
-	save = save + weapon[2]; // the |ap| of the weapon
-	printf("Save after ap is %d\n", save);
+	double  save =  target[1];
+	printf("Save before checking ap is %lf\n", save);
+	
+	double invulsave = target[2];
+	save = save + (double) weapon[2]; // the |ap| of the weapon
+	printf("Save after ap is %lf\n", save);
 	if (save < invulsave) {
 		save = invulsave;
 	}
 	if (save >= 7) {
 		save = 7;
 	}
-	printf("Save after checking invul is %d\n", save);
-	int canUnsave = save - 1;
+	printf("Save after checking invul is %lf\n", save);
+	double canUnsave = save - 1;
 	double unsaved = wounds * canUnsave / (float) 6;			
 	
 	// multi wound weapons
@@ -68,20 +69,20 @@ double shoot( int weapon[4], int target[4]) {
 int main()
 {
 	// bs, str, |ap|, wounds
-	int bolter[4] = {3,4, 0 ,1};
-	int lascannon[4] = {3, 9, 4, 1};
-	int plasma_std[4] = {3, 7, 3, 1};
-	int plasma_sup[4] = {3, 8, 3, 2};
+	double bolter[4] = {3,4, 0 ,1};
+	double lascannon[4] = {3, 9, 4, 1};
+	double plasma_std[4] = {3, 7, 3, 1};
+	double plasma_sup[4] = {3, 8, 3, 2};
+	double shuricat[4] = {4, 4, 0.5, 1};
 	// toughness, save, invul save, wounds
-	int marine[4] = {4, 3, 0, 1};
-	int heavy_vehicle[4] = {8, 3, 5, 10};
-	int termie[4] = {4, 2, 5, 2}; 
+	double guardian[4] = {3, 5, 0, 1};
+	double marine[4] = {4, 3, 0, 1};
+	double heavy_vehicle[4] = {8, 3, 5, 10};
+	double termie[4] = {4, 2, 5, 2}; 
 
 	printf("We will test 40k weapons according to 8th edition rules\n");
 	
 	printf("Here is one marine w/ bolter shooting at another marine\n");
-	double wounds = shoot(bolter, marine);
-	printf("Here is the number of wounds inflicted %lf \n", wounds);
 
 	printf("Now let's have a marine shoot another one with a lascannon!\n");
 	shoot(lascannon, marine);
@@ -100,6 +101,12 @@ int main()
 	
 	printf("Supercharged plasma, by marine, at termie\n");
 	shoot(plasma_sup, termie);
+
+	printf("A guardian shoots at a marine with his shuricat!\n");
+	shoot(shuricat, marine);
+
+	printf("A marine shoots at a guardian!\n");
+	shoot(bolter, guardian);
 
 	return 0;
 
